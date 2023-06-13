@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<style>
+    
+    body{
+        background-image: url("{% static 'back.jpg' %}");
+        font-size: smaller;
+    
+        
+    }
+    main{
+        backdrop-filter: blur(15px);
+        background-color: #ffffff00;
+        height: 600px ;
+        overflow-y:scroll;
+        border-radius: 20px;
+        padding: 0%;
+    }
+    label{
+        font-size:14px;
+        color: #0000008b;
+        font-weight: 200;
+    }
+    input{
+        font-size: 14px;
+        font-weight: 500;
+        padding-top: 15px!important;
+        padding-bottom: 15px!important;
+    }
+
+    span label{
+        padding-inline-start: 18px;
+    }
+
+    h3{
+        color: black;
+        font-size: medium;
+        width: fit-content;
+        font-weight: 800;
+    }
+
+    .date{
+        background-color: #ffffff58;
+    }
+
+    .f-div {
+        width:100%
+    }
+    .s-div {
+        width:100%
+    }
+
+    .nav-bar{
+        height: 50px;
+        background-color: rgba(255, 255, 255,1);
+    }
+
+    .main-div{
+        display: block;
+        width: 100%;
+    }
+    @media screen and (max-width: 800px) {
+        .main-div{
+            display: block;
+        }
+        .f-div {
+        width:100%
+        }
+        .s-div {
+        width:100%
+        }
+        main{
+            height: 800px;
+        }
+
+    }
+
+</style>
+<body class="vh-100" style="font-family: Arial, Helvetica, sans-serif;position: relative">
+    
+    <main class=" shadow-lg bg-gradient" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 90%;" >
+        <div class="nav-bar w-100 d-flex align-items-center">
+            <span >
+                <img src="{% static 'ttslogo.jpg' %}" height='50px' class=" m-2">
+            </span>
+    
+        </div>
+        
+        <div class="justify-content-center align-items-center m-auto main-div w-75">
+        
+        <span><p class="text-{{ color }} text-center fw-bold w-100 m-auto fs-3">{{ msg }}</p></span>
+
+        <!-----------Contact info left panel-------->
+        <div class="fs-5 pt-5 p-3 f-div m-auto" >
+            <form action="#" method="post">
+            {% csrf_token %}
+            <h3>Personal Detail</h3>
+
+            <label for="name"  class=" ps-2 mt-5">Name</label>
+            <input type="text" name="name" style="font-size: 15px;" class="w-100 date form-control" placeholder="Abc Xyz" required>
+
+            <label for="phone"  class=" ps-2 pt-4">Phone</label>
+            <input type="tel" name="phone" style="font-size: 15px;"  class="w-100 date form-control " placeholder="+91 736XXXXXXX" required>
+
+            <label for="mail"  class=" ps-2 pt-4">Email</label>
+            <input type="email" name="mail" style="font-size: 15px;" class="w-100 date form-control" placeholder="example@email.com" required>
+
+            <label for="mail"  class=" ps-2 pt-4">Location</label>
+            <input type="text" name="location" style="font-size: 15px;" class="w-100 date form-control" placeholder="Mumbai" required>
+
+
+
+        </div>
+        <!------------Details right panel------->
+        <hr/>
+        <div class="fs-5 ps-2 m-auto pt-5 s-div " >
+            <h3>Domain Detail</h3>
+            
+
+            
+            <div class="m-auto mt-4">
+                <label for="domianer">Purchased by</label><br/>
+                <div class="btn-group m-auto" role="group" aria-label="Basic radio toggle button group">
+                    <input value="customer" type="radio" class="btn-check" name="domain" id="domaincustomer" autocomplete="off" checked>
+                    <label class="btn btn-outline-dark" for="domaincustomer" style="font-size: x-small;">Customer</label>
+                      
+                    <input type="radio" value="tts" class="btn-check" name="domain" id="domaintts" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="domaintts" style="font-size: x-small;">TTS</label>
+                </div></div>
+
+            <label for="mail"  class=" ps-2 pt-4">Domain Name</label>
+            <input type="text" name="domainname" id="domainname" style="font-size: 15px;" class="w-100 date form-control" placeholder="www.xyz.com">
+
+            <span class="d-block pt-3 m-auto w-100">
+            <label for="purchasedate" class=" ps-2 pt-1">Domain Purchase Date</label>
+            <input type="date" id=" purchasedate"style="font-size: 15px;" name="domainpurchase"
+            class="px-2  date form-control "></span>
+            
+            <span class="d-block pt-3 m-auto w-100">
+                <label for="purchaseexpiry" class=" ps-2 pt-1">Domain Expiry Date</label>
+                <input type="date" id="purchaseexpiry" style="font-size: 15px;" name="domainexpiry"
+                class="px-2  date form-control"></span>
+            
+            <hr/>
+
+            <h3>Hosting Detail</h3>
+
+            <span class="d-block mt-5">
+                <label for="domianer mt-5">Purchased by</label><br/>
+                <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
+                    <input value="customer" type="radio" class="btn-check" name="hosting" id="hostcustomer" autocomplete="off" checked>
+                    <label class="btn btn-outline-dark" for="hostcustomer" style="font-size: x-small;">Customer</label>
+                      
+                    <input type="radio" value="tts" class="btn-check" name="hosting" id="hosttts" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="hosttts" style="font-size: x-small;">TTS</label>
+        
+            </div></span>
+
+            <span class="d-block pt-5 m-auto">
+            <label for="purchasedate" class=" ps-2 pt-1">Hosting Purchase Date</label>
+            <input type="date" id=" purchasedate"style="font-size: 15px;" name="hostpurchase"
+            class="px-2 date form-control w-100"></span>
+            
+            <span class="d-block py-3 m-auto">
+                <label for="purchaseexpiry" class=" ps-2 pt-1">Hosting Expiry Date</label>
+                <input type="date" id="purchaseexpiry" style="font-size: 15px;" name="hostexpiry"
+                class="px-2 date form-control w-100"></span>
+
+            <hr/>
+
+                <h3>Email Service Detail</h3>
+
+                <span class="align-items-center d-flex">               
+                <input type="checkbox" class="form-check-input " value="emailed" name="emailcheck" id="emailcheck" style="font-size: small;width: 20px;" checked>
+                <label for="emailcheck" class="ps-2 form-check-label">Email Purchased</label></span> 
+                
+                <div>
+                <div class="d-flex align-items-center justify-content-between">
+                <span class="d-block mt-1">
+                    <label for="domianer mt-1">Email Type</label><br/>
+                    <div class="btn-group mx-2" role="group" aria-label="Basic radio toggle button group">
+                        <input value="paid" type="radio" class="btn-check" name="emailtype" id="emailpaid" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="emailpaid" style="font-size: x-small;">Paid</label>
+                          
+                        <input type="radio" value="free" class="btn-check" name="emailtype" id="emailfree" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="emailfree" style="font-size: x-small;">Free</label>
+            
+                </div></span>
+
+                <span class="d-block py-3 ">
+                    <label for="domianer">Purchased by</label><br/>
+                    <div class="btn-group mx-2" role="group" aria-label="Basic radio toggle button group">
+                        <input value="customer" type="radio" class="btn-check" name="email" id="emailcustomer" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark" for="emailcustomer" style="font-size: x-small;">Customer</label>
+                          
+                        <input type="radio" value="tts" class="btn-check" name="email" id="emailtts" autocomplete="off">
+                        <label class="btn btn-outline-dark" for="emailtts" style="font-size: x-small;">TTS</label>
+            
+                </div></span></div>
+
+            </div>
+
+                <span class="d-block py-3 m-auto">
+                    <label for="purchasedate" class=" ps-2 pt-1">Email Service Provider</label>
+                    <input type="text" id="emailcompany" style="font-size: 15px;" name="emailprovider"
+                    placeholder="xyz company" class="px-2 date form-control w-100"></span>
+    
+                
+    
+                <span class="d-block pt-2 m-auto">
+                <label for="purchasedate" class=" ps-2 pt-1">Email Purchase Date</label>
+                <input type="date" id="emailpur"style="font-size: 15px;" name="emailpurchase"
+                class="px-2 date form-control w-100"></span>
+                
+                <span class="d-block mb-5 py-3">
+                    <label for="purchaseexpiry" class=" ps-2 pt-1">Email Expiry Date</label>
+                    <input type="date" id="emailexp" style="font-size: 15px;" name="emailexpiry"
+                    class="px-2 date form-control w-100"></span>
+            </div>
+        </div>
+        <span  class="align-items-center d-flex my-3">
+            <input type="submit" value="Submit" name="submit" class="w-50 btn bg-black  fw-bolder text-light rounded-pill px-3 m-auto">
+        </span>
+    </form>
+            
+
+
+    </main>   
+    
+</body>
+</html>
+<script>
+    document.getElementById('emailcheck').onchange = function() {
+
+    document.getElementById('emailpaid').disabled = !this.checked;
+    document.getElementById('emailfree').disabled = !this.checked;
+    document.getElementById('emailcustomer').disabled = !this.checked;
+    document.getElementById('emailtts').disabled = !this.checked;
+    document.getElementById('emailpur').disabled = !this.checked;
+    document.getElementById('emailexp').disabled = !this.checked;
+    document.getElementById('emailcompany').disabled = !this.checked;
+};
+</script>
+
